@@ -1,11 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './Layouts/Navbar/Navbar';
+import Navbar from './Layout/Navbar/Navbar';
+import ExploreTopProducts from './Layout/ExploreTopProducts/ExploreTopProducts';
 
 function App() {
   return (
-    <Navbar></Navbar>
+    <div>
+      <Navbar></Navbar>
+      <ExploreTopProducts></ExploreTopProducts>
+    </div>
+
   );
 }
 
