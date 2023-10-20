@@ -7,8 +7,30 @@
   background: radial-gradient(circle at 1% 90%, rgba(51,14,55,1) 0%, rgba(24,6,24,1) 86%);
   border-radius: 0% !important;  
 }
-
-
-.h30{
-  height: 30em;
+.carouselbtn{
+  background-color: #E7B3B3;
 }
+.sec{
+  background-color: #190B2F;
+}
+.cardsize{
+  height: 500px;
+}
+.rad{
+  border-radius:5%;
+}
+.carousel{
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.sectioncard{
+  width: 20em;
+  height: 30em;
+  border-radius: 5%;
+  overflow: hidden;
+}
+.img-wrapper{
+  background-color: #E7B3B3;
+}
+
