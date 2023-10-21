@@ -5,7 +5,7 @@ type Props = {}
 const Carousel = (props: Props) => {
     return (
         <div id="carouselExampleControls" className="carousel carousel-dark slide w-75" data-bs-ride="carousel">
-            <div className="carousel-inner">
+            <div className="carousel-inner py-5">
                 <div className="carousel-item active">
                     <div className="row ">
                         <div className="col-lg-3 me-5 ms-5 ">

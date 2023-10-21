@@ -2,6 +2,10 @@
   background-color: #031D31;
 
 }
+.flower-bg{
+  background-image: url('/public/images/flowerBackground.jpg');
+  background-repeat: no-repeat;
+}
 .flowerHeader{
   background: rgb(51,14,55);
   background: radial-gradient(circle at 1% 90%, rgba(51,14,55,1) 0%, rgba(24,6,24,1) 86%);
