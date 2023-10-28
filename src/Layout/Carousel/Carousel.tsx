@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductModel from '../../models/ProductModel'
 import ProductCard from '../ProductCard/ProductCard';
+import Spinner from '../utils/Spinner';
 
 type Props = {}
 
@@ -50,9 +51,7 @@ const Carousel = (props: Props) => {
 
     if (isLoading) {
         return (
-            <div className='container m-5'>
-                <p>Carregando...</p>
-            </div>
+           <Spinner></Spinner>
         )
     }
 
