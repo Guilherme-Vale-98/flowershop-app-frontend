@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProductModel from '../../models/ProductModel'
+import ProductCard from '../ProductCard/ProductCard';
 
 type Props = {}
 
@@ -9,14 +10,14 @@ const Carousel = (props: Props) => {
     const [products, setProducts] = useState<ProductModel[]>([]);
     const [httpError, setHttpError] = useState(null);
 
-    useEffect(()=>{
-        const fetchProducts = async () =>{
+    useEffect(() => {
+        const fetchProducts = async () => {
             const baseUrl: string = "http://localhost:8080/api/products";
 
-            const url: string = `${baseUrl}?page=0&size=3`;
+            const url: string = `${baseUrl}?page=0&size=6`;
 
             const response = await fetch(url);
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error("Error fetching products!")
             }
 
@@ -25,7 +26,7 @@ const Carousel = (props: Props) => {
 
             const loadedProducts: ProductModel[] = [];
 
-            for (const key in responseData){
+            for (const key in responseData) {
                 loadedProducts.push({
                     id: responseData[key].id,
                     name: responseData[key].name,
@@ -47,7 +48,7 @@ const Carousel = (props: Props) => {
         })
     }, []);
 
-    if(isLoading){
+    if (isLoading) {
         return (
             <div className='container m-5'>
                 <p>Carregando...</p>
@@ -55,7 +56,7 @@ const Carousel = (props: Props) => {
         )
     }
 
-    if(httpError){
+    if (httpError) {
         return (
             <div className='container m-5'>
                 <p>{httpError}</p>
@@ -68,102 +69,19 @@ const Carousel = (props: Props) => {
         <div id="carouselExampleControls" className="carousel carousel-dark slide w-75" data-bs-ride="carousel">
             <div className="carousel-inner py-5">
                 <div className="carousel-item active">
-                    <div className="row ">
-                        <div className="col-lg-3 me-5 ms-5 ">
-                            <div className="card sectioncard" >
-                                <div className='img-wrapper'>
-                                    <img src="images/orchid.png" className="card-img-top" alt="..." />
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title fs-3">Orchids</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <form className="d-flex justify-content-center">
-                                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 me-5 ms-5 ">
-                            <div className="card sectioncard" >
-                                <div className='img-wrapper'>
-                                    <img src="images/rose.png" className="card-img-top" alt="..." />
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title fs-3">Roses</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <form className="d-flex justify-content-center">
-                                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 me-5 ms-5 ">
-                            <div className="card sectioncard" >
-                                <div className='img-wrapper'>
-                                    <img src="images/orchid.png" className="card-img-top" alt="..." />
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title fs-3">Orchids</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <form className="d-flex justify-content-center">
-                                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div className="row">
+                        <ProductCard />
+                        <ProductCard />
+                        <ProductCard />
                     </div>
                 </div>
                 <div className="carousel-item">
-                <div className="row ">
-                        <div className="col-lg-3 me-5 ms-5 ">
-                            <div className="card sectioncard" >
-                                <div className='img-wrapper'>
-                                    <img src="images/orchid.png" className="card-img-top" alt="..." />
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title fs-3">Orchids</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <form className="d-flex justify-content-center">
-                                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 me-5 ms-5 ">
-                            <div className="card sectioncard" >
-                                <div className='img-wrapper'>
-                                    <img src="images/rose.png" className="card-img-top" alt="..." />
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title fs-3">Roses</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <form className="d-flex justify-content-center">
-                                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 me-5 ms-5 ">
-                            <div className="card sectioncard" >
-                                <div className='img-wrapper'>
-                                    <img src="images/orchid.png" className="card-img-top" alt="..." />
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title fs-3">Orchids</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <form className="d-flex justify-content-center">
-                                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div className="row ">
+                        <ProductCard />
+                        <ProductCard />
+                        <ProductCard />
                     </div>
-
-
                 </div>
-
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
