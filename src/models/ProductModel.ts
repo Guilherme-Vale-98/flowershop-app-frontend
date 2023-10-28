@@ -18,6 +18,5 @@ class ProductModel {
         this.img = img;
 
     }
-
-
 }
+export default ProductModel;

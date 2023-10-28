@@ -5,6 +5,7 @@ import ExploreTopProducts from './Layout/ExploreTopProducts/ExploreTopProducts';
 import Carousel from './Layout/Carousel/Carousel';
 import Section from './Layout/Section/Section';
 import Heros from './Layout/Heros/Heros';
+import Footer from './Layout/Footer/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <ExploreTopProducts></ExploreTopProducts>
       <Heros></Heros>
       <Section/>
+      <Footer></Footer>
     </div>
 
   );
