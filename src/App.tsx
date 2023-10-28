@@ -6,14 +6,16 @@ import Carousel from './Layout/Carousel/Carousel';
 import Section from './Layout/Section/Section';
 import Heros from './Layout/Heros/Heros';
 import Footer from './Layout/Footer/Footer';
+import SearchProductPage from './Layout/SearchProductPage/SearchProductPage';
 
 function App() {
   return (
     <div>
       <Navbar></Navbar>
-      <ExploreTopProducts></ExploreTopProducts>
+{/*       <ExploreTopProducts></ExploreTopProducts>
       <Heros></Heros>
-      <Section/>
+      <Section/> */}
+      <SearchProductPage></SearchProductPage>
       <Footer></Footer>
     </div>
 

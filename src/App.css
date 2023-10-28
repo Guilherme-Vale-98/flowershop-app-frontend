@@ -2,6 +2,13 @@
   background-color: #031D31;
 
 }
+
+.fit > img{
+  width: auto;
+  height : auto;
+  max-height: 100%;
+  max-width: 100%;
+}
 .flower-bg{
   background-image: url('/public/images/flowerBackground.jpg');
   background-repeat: no-repeat;
