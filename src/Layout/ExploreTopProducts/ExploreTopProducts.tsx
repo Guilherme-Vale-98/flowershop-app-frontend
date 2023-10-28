@@ -7,7 +7,7 @@ const ExploreTopProducts = (props: Props) => {
   return (
     <div className="card flowerHeader">
       <div>
-        <img src="/images/header.png" alt="" className='w-100' style={{height:'25em;'}} />
+        <img src="/images/header.png" alt="" className='w-100' style={{height:'25em'}} />
       </div>
       <div className="fs-5 p-5 text-white m-5 card-img-overlay">
         <p className=" fs-4 mt-2 card-text">Desabroche seus momentos</p>

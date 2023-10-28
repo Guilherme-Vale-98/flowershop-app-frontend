@@ -1,14 +1,14 @@
 class ProductModel {
-    id: Number;
-    name: String;
-    description?:String;
-    copies?: Number;
-    copiesAvailable?: Number;
-    category?: String;
-    img?: String;
+    id: number;
+    name: string;
+    description?:string;
+    copies?: number;
+    copiesAvailable?: number;
+    category?: string;
+    img?: string;
 
 
-    constructor(id: Number, name: String, description: String, copies: Number, copiesAvailable: Number, category: String, img: String){
+    constructor(id: number, name: string, description: string, copies: number, copiesAvailable: number, category: string, img: string){
         this.id = id;
         this.name = name;
         this.description = description;

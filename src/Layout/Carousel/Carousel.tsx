@@ -70,16 +70,14 @@ const Carousel = (props: Props) => {
             <div className="carousel-inner py-5">
                 <div className="carousel-item active">
                     <div className="row">
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+                        {products.slice(0,3).map(product => <ProductCard product={product} key={product.id}/>)}
                     </div>
                 </div>
                 <div className="carousel-item">
                     <div className="row ">
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+                    <div className="row">
+                        {products.slice(3,6).map(product => <ProductCard product={product} key={product.id}/>)}
+                    </div>
                     </div>
                 </div>
             </div>
