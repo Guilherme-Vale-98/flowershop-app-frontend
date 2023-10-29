@@ -15,13 +15,22 @@ const SearchProductPage = (props: Props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [ totalPages, setTotalPages] = useState(0);
     const [ totalProducts, setTotalProducts] = useState(0);
+    const [ search, setSearch] = useState("");
+    const [searchUrl, setSearchUrl] = useState("");
     
 
     useEffect(() => {
         const fetchProducts = async () => {
             const baseUrl: string = "http://localhost:8080/api/products";
-            
-            const url: string = `${baseUrl}?page=${currentPage - 1}&size=${productsPerPage}`;
+            let url: string = "";
+            if (searchUrl === ""){
+                url = `${baseUrl}?page=${currentPage - 1}&size=${productsPerPage}`;
+            } else{
+                url = baseUrl + searchUrl;
+            }
+
+
+      
 
             const response = await fetch(url);
             if (!response.ok) {
@@ -57,7 +66,7 @@ const SearchProductPage = (props: Props) => {
             setHttpError(error.message);
         })
         window.scrollTo(0,0);
-    }, [currentPage]);
+    }, [currentPage, searchUrl]);
 
     if (isLoading) {
         return (
@@ -73,6 +82,14 @@ const SearchProductPage = (props: Props) => {
         )
     }
 
+    const handleSearchChange = ()=>{
+        if (search===""){
+            setSearchUrl('')
+        }else{
+            setSearchUrl(`/search/findByNameContaining?name=${search}&page=0&size=${productsPerPage}`)
+        }
+    }
+
     const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
@@ -81,8 +98,8 @@ const SearchProductPage = (props: Props) => {
                 <div className="row mt-5">
                     <div className="col-6">
                         <div className="d-flex">
-                            <input className='form-control me-4' type="search" placeholder='Search' aria-labelledby='Search' />
-                            <button className='btn btn-outline-success'>Search</button>
+                            <input className='form-control me-4' type="search" placeholder='Search' aria-labelledby='Search' onChange={e => setSearch(e.target.value)} />
+                            <button className='btn btn-outline-success' onClick={()=> handleSearchChange()}>Search</button>
                         </div>
                     </div>
                     <div className="col-6">
@@ -103,7 +120,7 @@ const SearchProductPage = (props: Props) => {
                     <div className="row row-cols-1 row-cols-md-1 row-cols-lg-2">
                         {products.map(product => <SearchProduct product={product} key={product.id}/>)}                 
                     </div>
-                    {<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange}/> }
+                    {totalProducts > 0 && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange}/> }
                 </div>
             </div>
         </div>
