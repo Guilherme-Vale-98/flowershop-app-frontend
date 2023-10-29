@@ -17,6 +17,7 @@ const SearchProductPage = (props: Props) => {
     const [ totalProducts, setTotalProducts] = useState(0);
     const [ search, setSearch] = useState("");
     const [searchUrl, setSearchUrl] = useState("");
+    const [category, setCategory] = useState("Categorias");
     
 
     useEffect(() => {
@@ -26,7 +27,8 @@ const SearchProductPage = (props: Props) => {
             if (searchUrl === ""){
                 url = `${baseUrl}?page=${currentPage - 1}&size=${productsPerPage}`;
             } else{
-                url = baseUrl + searchUrl;
+                let searchPageUrl = searchUrl.replace("<pageNumber>", `${currentPage-1}`)
+                url = baseUrl + searchPageUrl;
             }
 
 
@@ -82,12 +84,28 @@ const SearchProductPage = (props: Props) => {
         )
     }
 
+    const categoryField = (value: string)=>{
+        setCurrentPage(1)
+        if(
+            value.toLowerCase() === "buquês" ||
+            value.toLowerCase() === "cestas" 
+        ){
+            setCategory(value)
+            setSearchUrl(`/search/findByCategory?category=${value}&page=<pageNumber>&size=${productsPerPage}`)
+        }else{
+            setCategory("All");
+            setSearchUrl(`?page=<pageNumber>&size=${productsPerPage}`)
+        }
+    }
+
     const handleSearchChange = ()=>{
+        setCurrentPage(1)
         if (search===""){
             setSearchUrl('')
         }else{
-            setSearchUrl(`/search/findByNameContaining?name=${search}&page=0&size=${productsPerPage}`)
+            setSearchUrl(`/search/findByNameContaining?name=${search}&page=<pageNumber>&size=${productsPerPage}`)
         }
+        setCategory("Categorias")
     }
 
     const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -105,12 +123,12 @@ const SearchProductPage = (props: Props) => {
                     <div className="col-6">
                         <div className="dropdown">
                             <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorias
+                                {category}
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a className="dropdown-item" href="#">Buquês</a></li>
-                                <li><a className="dropdown-item" href="#">Cestas</a></li>
-                                <li><a className="dropdown-item" href="#">Jarras</a></li>
+                                <li onClick={() => categoryField("Buquês")}><a className="dropdown-item" href="#">Buquês</a></li>
+                                <li onClick={() => categoryField("Cestas")}><a className="dropdown-item" href="#">Cestas</a></li>
+                                <li onClick={() => categoryField("Jarras")}><a className="dropdown-item" href="#">Jarras</a></li>
                             </ul>
                         </div>
                     </div>
