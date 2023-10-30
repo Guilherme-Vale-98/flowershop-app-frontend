@@ -12,14 +12,16 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Navbar></Navbar>
-        <Routes>
-          <Route path='/' element={<Navigate to={"/home"}></Navigate>}></Route>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/search' element={<SearchProductPage/>}/>
-        </Routes>
-      <Footer></Footer>
+    <div className='d-flex flex-column min-vh-100'>
+      <Navbar/>
+        <div className='flex-grow-1'>  
+          <Routes >
+            <Route path='/' element={<Navigate to={"/home"}></Navigate>}></Route>
+            <Route path='/home' element={<Home/>}/>
+            <Route path='/search' element={<SearchProductPage/>}/>
+          </Routes>
+        </div>
+      <Footer/>
     </div>
 
   );

@@ -112,7 +112,7 @@ const SearchProductPage = (props: Props) => {
     const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
-        <div className='flower-bg' style={{backgroundRepeat: 'repeat-y'}}>
+        <div className='flower-bg' style={{backgroundRepeat: 'repeat-y', border: "2px solid red", minHeight: "40vh"}}>
             <div className="container">
                 <div className="row mt-2">
                     <div className="col-6">
