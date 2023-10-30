@@ -112,12 +112,12 @@ const SearchProductPage = (props: Props) => {
     const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
-        <div className='flower-bg' style={{backgroundRepeat: 'repeat-y', border: "2px solid red", minHeight: "40vh"}}>
+        <div className='flower-bg' style={{backgroundRepeat: 'repeat-y', minHeight: "40vh"}}>
             <div className="container">
                 <div className="row mt-2">
                     <div className="col-6">
                         <div className="d-flex">
-                            <input className='form-control me-4' type="search" placeholder='Search' aria-labelledby='Search' onChange={e => setSearch(e.target.value)} />
+                            <input className='form-control me-4' type="search" placeholder='Buscar Produtos' aria-labelledby='Search' onChange={e => setSearch(e.target.value)} />
                             <button className='btn btn-outline-success' onClick={()=> handleSearchChange()}>Search</button>
                         </div>
                     </div>

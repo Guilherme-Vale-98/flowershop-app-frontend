@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 type Props = {}
 
@@ -6,25 +7,17 @@ const Navbar = (props: Props) => {
   return (
 <nav className="navbar fs-4 purple navbar-expand-lg navbar-light">
   <div className="text-white container-fluid">
-    <a className="navbar-brand text-white fs-2 ms-5 ps-5" href="#">My Flower Shop</a>
+    <NavLink className="navbar-brand text-white fs-2 ms-5 ps-5" to="/home">My Flower Shop</NavLink>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse ps-5 ms-5 navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+          <NavLink className="nav-link active text-white" aria-current="page" to="/home">Início</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link  text-white" href="#">Shop</a>
-        </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Products
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a className=" fs-5 dropdown-item" href="#">Buquês</a></li>
-          </ul>
+          <NavLink className="nav-link  text-white" to="/search">Buscar Produtos</NavLink>
         </li>
       </ul>
       <form className="d-flex">
