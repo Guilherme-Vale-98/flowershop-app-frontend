@@ -11,8 +11,7 @@ const SearchProduct = (props: Props) => {
             <div className="card p-3 mb-3">
                 <div className="row g-0">
                     <div className="col-md-4 d-flex justify-content-center" style={{ height: '300px' }}>
-                        <img src={props.product.img} className="img-fluid rounded-start" style={{ height: '100%' }} alt="..." />
-                        
+                        <img src={props.product.img} className="img-fluid rounded-start" style={{ height: '100%', border: "2px solid black", borderRadius: "10px" }} alt="..." />
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
@@ -21,8 +20,8 @@ const SearchProduct = (props: Props) => {
                         </div>
                     </div>
                     <form className="col-md-4 mt-2 d-flex justify-content-center">
-                                <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
-                            </form>
+                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
+                    </form>
                 </div>
             </div>
         </div>

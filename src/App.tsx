@@ -7,15 +7,18 @@ import Section from './Layout/Section/Section';
 import Heros from './Layout/Heros/Heros';
 import Footer from './Layout/Footer/Footer';
 import SearchProductPage from './Layout/SearchProductPage/SearchProductPage';
+import Home from './Layout/Home/Home';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div>
       <Navbar></Navbar>
-{/*       <ExploreTopProducts></ExploreTopProducts>
-      <Heros></Heros>
-      <Section/> */}
-      <SearchProductPage></SearchProductPage>
+        <Routes>
+          <Route path='/' element={<Navigate to={"/home"}></Navigate>}></Route>
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/search' element={<SearchProductPage/>}/>
+        </Routes>
       <Footer></Footer>
     </div>
 

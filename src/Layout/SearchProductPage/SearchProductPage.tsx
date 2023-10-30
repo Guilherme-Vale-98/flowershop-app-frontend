@@ -88,7 +88,8 @@ const SearchProductPage = (props: Props) => {
         setCurrentPage(1)
         if(
             value.toLowerCase() === "buquês" ||
-            value.toLowerCase() === "cestas" 
+            value.toLowerCase() === "cestas" ||
+            value.toLowerCase() === "jarras"
         ){
             setCategory(value)
             setSearchUrl(`/search/findByCategory?category=${value}&page=<pageNumber>&size=${productsPerPage}`)
@@ -113,7 +114,7 @@ const SearchProductPage = (props: Props) => {
     return (
         <div className='flower-bg' style={{backgroundRepeat: 'repeat-y'}}>
             <div className="container">
-                <div className="row mt-5">
+                <div className="row mt-2">
                     <div className="col-6">
                         <div className="d-flex">
                             <input className='form-control me-4' type="search" placeholder='Search' aria-labelledby='Search' onChange={e => setSearch(e.target.value)} />
@@ -122,7 +123,7 @@ const SearchProductPage = (props: Props) => {
                     </div>
                     <div className="col-6">
                         <div className="dropdown">
-                            <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" style={{backgroundColor: "#E7B3B3", color: "black"}}  aria-expanded="false">
                                 {category}
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
