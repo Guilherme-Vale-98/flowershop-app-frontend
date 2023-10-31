@@ -50,6 +50,7 @@ const SearchProductPage = (props: Props) => {
                 loadedProducts.push({
                     id: responseData[key].id,
                     name: responseData[key].name,
+                    price: responseData[key].price,
                     description: responseData[key].description,
                     copies: responseData[key].copies,
                     copiesAvailable: responseData[key].copiesAvailable,
