@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ProductModel from '../../models/ProductModel'
 import Spinner from '../utils/Spinner';
+import StarReview from '../utils/StarReview';
+
+
+
 
 type Props = {}
 
@@ -62,7 +66,7 @@ const ProductCheckoutPage = (props: Props) => {
 
 
     return (
-        <div className="container" style={{border: "2px solid red"}}>
+        <div className="container">
             <div className="row">
                 <div className="col-md-4">
                     <div className="my-4 d-flex justify-content-center">
@@ -74,6 +78,7 @@ const ProductCheckoutPage = (props: Props) => {
                     <div className="my-4">
                         <h2>Heading</h2>
                         <p>This is some text content. You can add any information or details you'd like in this div.</p>
+                        <StarReview rating={7}/>
                     </div>
                 </div>
             </div>
