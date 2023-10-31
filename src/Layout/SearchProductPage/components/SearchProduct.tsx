@@ -1,5 +1,6 @@
 import React from 'react'
 import ProductModel from '../../../models/ProductModel'
+import { NavLink } from 'react-router-dom'
 
 type Props = {
     product: ProductModel
@@ -20,7 +21,7 @@ const SearchProduct = (props: Props) => {
                         </div>
                     </div>
                     <form className="col-md-4 mt-2 d-flex justify-content-center">
-                        <button className="btn fs-4 carouselbtn" type="submit">Veja detalhes</button>
+                        <NavLink className="btn fs-4 carouselbtn" to={`/checkout/${props.product.id}`} >Veja detalhes</NavLink>
                     </form>
                 </div>
             </div>
