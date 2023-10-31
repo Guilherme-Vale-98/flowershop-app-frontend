@@ -9,6 +9,7 @@ import Footer from './Layout/Footer/Footer';
 import SearchProductPage from './Layout/SearchProductPage/SearchProductPage';
 import Home from './Layout/Home/Home';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import ProductCheckoutPage from './Layout/ProductCheckoutPage/ProductCheckoutPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/' element={<Navigate to={"/home"}></Navigate>}></Route>
             <Route path='/home' element={<Home/>}/>
             <Route path='/search' element={<SearchProductPage/>}/>
+            <Route path="/checkout/:productId" element={<ProductCheckoutPage/>}></Route>
           </Routes>
         </div>
       <Footer/>
