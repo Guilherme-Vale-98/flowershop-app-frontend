@@ -4,6 +4,8 @@ import Spinner from '../utils/Spinner';
 import StarReview from '../utils/StarReview';
 import { Link, NavLink } from 'react-router-dom';
 import CheckoutReviewBox from './CheckoutReviewBox';
+import ReviewModel from '../../models/ReviewModel';
+import LatestReviews from './LatestReviews';
 
 
 
@@ -15,6 +17,10 @@ const ProductCheckoutPage = (props: Props) => {
     const [product, setProduct] = useState<ProductModel>();
     const [isLoadingProduct, setIsLoadingProduct] = useState(true);
     const [httpError, setHttpError] = useState(null);
+
+    const [review, setReview] = useState<ReviewModel[]>([]);
+    const [totalStars, setTotalStars] = useState(0);
+    const [isLoadingReview, setIsLoadingReview] = useState(true)
 
     const productId = (window.location.pathname).split('/')[2];
 
@@ -51,7 +57,50 @@ const ProductCheckoutPage = (props: Props) => {
             setHttpError(error.message);
         })
     }, []);
-    if (isLoadingProduct) {
+
+    useEffect(()=>{
+        const fetchProductReviews = async () => {
+            const reviewUrl = `http://localhost:8080/api/reviews/search/findByProductId?productId=${productId}`
+            const responseReviews = await fetch(reviewUrl)
+            if(!responseReviews.ok){
+                throw new Error("Error fetching Reviews!!")
+            }
+
+            const responseReviewsJson = await responseReviews.json();
+
+            const responseData = responseReviewsJson._embedded.reviews;
+
+            const loadedReviews: ReviewModel[] = [];
+
+            let weightedStarReviews: number = 0;
+
+            for(const key in responseData){
+                loadedReviews.push({
+                    id: responseData[key].id,
+                    userEmail: responseData[key].userEmail,
+                    date: responseData[key].date,
+                    rating: responseData[key].rating,
+                    product_id: responseData[key].productId,
+                    content: responseData[key].content
+                });
+                weightedStarReviews = weightedStarReviews + responseData[key].rating;
+            }
+            if (loadedReviews){
+                const starsMean = weightedStarReviews / loadedReviews.length;
+                setTotalStars(starsMean)
+            }
+            setReview(loadedReviews)
+            setIsLoadingReview(false)
+        }
+
+        fetchProductReviews().catch((error: any)=>{
+            setIsLoadingReview(false)
+            setHttpError(error.message)
+        })
+
+    }, [])
+
+    if (isLoadingProduct || isLoadingReview) {
         return (
             <Spinner></Spinner>
         )
@@ -67,7 +116,7 @@ const ProductCheckoutPage = (props: Props) => {
 
 
 
-
+    console.log(review)
     return (
         <div className="container my-3">
             <div className="row">
@@ -84,10 +133,12 @@ const ProductCheckoutPage = (props: Props) => {
                         <p>{product?.description}</p>
                         <StarReview rating={4.5} />
                     </div>
+                    
                 </div>
                 {product && <CheckoutReviewBox product={product}></CheckoutReviewBox>}
-
+                {product && <LatestReviews reviews={review} productId={product.id} mobile={false}/>}
             </div>
+            
         </div>
     )
 }

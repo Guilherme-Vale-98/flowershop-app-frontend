@@ -44,9 +44,14 @@
 .img-wrapper{
   background-color: #E7B3B3;
 }
-
+.review-img{
+  border-radius: 50%;
+  align-self: center;
+  max-height: 80%;
+}
 .smaller-image {
   max-width: 100%;
   height: auto; 
   max-height: 300px; 
 }
+

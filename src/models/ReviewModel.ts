@@ -15,3 +15,5 @@ class ReviewModel{
         this.content = content;
     }
 }
+
+export default ReviewModel
